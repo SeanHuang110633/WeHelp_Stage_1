@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登入系統</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        margin: 30px auto;
+        background-color: white;
+        padding: 20px;
+      }
+      .header {
+        background-color: #1f2f47;
+        color: white;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .form-group {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      label {
+        font-weight: bold;
+      }
+      .checkbox-group {
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      .checkbox-group input {
+        margin-right: 5px;
+      }
+      .submit-btn {
+        padding: 5px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+      .submit-btn:hover {
+        background-color: #e0e0e060;
+      }
+      hr {
+        margin-top: 20px;
+      }
+      .count-square-btn {
+        margin-top: 10px;
+        padding: 5px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">歡迎光臨，請輸入帳號密碼</div>
+
+    <div class="container">
+      <h3>登入系統</h3>
+      <form action="/signin" method="post" onsubmit="return checkCheckbox()">
+        <div class="form-group">
+          <label for="account">帳號</label>
+          <input type="text" id="account" name="account" />
+        </div>
+
+        <div class="form-group">
+          <label for="password">密碼</label>
+          <input type="password" id="password" name="password" />
+        </div>
+
+        <div class="checkbox-group">
+          <input type="checkbox" id="agree" name="agree" />
+          <label for="agree">同意條款</label>
+        </div>
+
+        <button type="submit" class="submit-btn">登入</button>
+      </form>
+      <hr />
+      <h3>計算平方數</h3>
+      <div class="count-square">
+        <label for="number">正整數</label>
+        <input type="number" id="number" placeholder="輸入數字" />
+      </div>
+
+      <button class="count-square-btn" onclick="goToSquarePage()">計算</button>
+    </div>
+
+    <script>
+      // 檢查是否勾選使用條款
+      function checkCheckbox() {
+        let checkbox = document.getElementById("agree");
+        if (!checkbox.checked) {
+          alert("Please check the checkbox first");
+          return false;
+        }
+        return true;
+      }
+
+      // 計算平方根
+      function goToSquarePage() {
+        let number = document.getElementById("number").value;
+        if (!number || isNaN(number) || number <= 0) {
+          alert("Please enter a positive number");
+          return;
+        }
+        window.location.href = "/square/" + number;
+      }
+    </script>
+  </body>
+</html>

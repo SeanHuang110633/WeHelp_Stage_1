@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: #1f2f47;
+        color: white;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      p {
+        padding-top: 20px;
+        text-align: center;
+      }
+      a {
+        display: block;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">失敗頁面</div>
+    <p>{{ message }}</p>
+    <a href="/">返回首頁</a>
+  </body>
+</html>
