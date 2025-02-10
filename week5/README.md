@@ -145,3 +145,55 @@ outcome :
 
 ![Task3-8-1](screenshot/T3_8_1.png)
 ![Task3-8-2](screenshot/T3_8_2.png)
+
+---
+
+# Task 4: SQL Aggregation Functions
+
+### SELECT how many rows from the member table.
+
+SQL:
+
+```sql
+SELECT COUNT(*) AS total_rows FROM member;
+```
+
+outcome :
+
+![Task4-1](screenshot/T4_1.png)
+
+### SELECT the sum of follower_count of all the rows from the member table.
+
+SQL:
+
+```sql
+SELECT SUM(follower_count) AS total_followers FROM member;
+```
+
+outcome :
+
+![Task4-2](screenshot/T4_2.png)
+
+### SELECT the average of follower_count of all the rows from the member table.
+
+SQL:
+
+```sql
+SELECT AVG(follower_count) AS avg_followers FROM member;
+```
+
+outcome :
+
+![Task4-3](screenshot/T4_3.png)
+
+### SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table.
+
+SQL:
+
+```sql
+SELECT AVG(follower_count) AS avg_followers_for_MostTwo_ FROM (SELECT follower_count FROM member ORDER BY follower_count DESC LIMIT 2) AS top2;
+```
+
+outcome :
+
+![Task4-4](screenshot/T4_4.png)
