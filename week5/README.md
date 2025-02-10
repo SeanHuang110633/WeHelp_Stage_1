@@ -197,3 +197,75 @@ SELECT AVG(follower_count) AS avg_followers_for_MostTwo_ FROM (SELECT follower_c
 outcome :
 
 ![Task4-4](screenshot/T4_4.png)
+
+---
+
+# Task 5: SQL JOIN
+
+### Create a new table named message, in the website database. designed as below:
+
+SQL:
+
+```sql
+CREATE TABLE message (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    member_id BIGINT NOT NULL,
+    content VARCHAR(255) NOT NULL,
+    like_count INT UNSIGNED NOT NULL DEFAULT 0,
+    TIME DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (member_id) REFERENCES member(id)
+);
+```
+
+outcome :
+
+![Task5-1](screenshot/T5_1.png)
+
+### SELECT all messages, including sender names. We have to JOIN the member table to get that.
+
+SQL:
+
+```sql
+SELECT member.name AS senders, message.* FROM message JOIN member ON  message.member_id = member.id;
+```
+
+outcome :
+
+![Task5-2](screenshot/T5_2.png)
+
+### SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that.
+
+SQL:
+
+```sql
+SELECT member.name AS senders, message.* FROM message JOIN member ON  message.member_id = member.id WHERE member.username ='test';
+```
+
+outcome :
+
+![Task5-3](screenshot/T5_3.png)
+
+### Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test.
+
+SQL:
+
+```sql
+SELECT AVG(message.like_count) AS avg_likes FROM message JOIN member ON message.member_id = member.id WHERE member.username ='test';
+```
+
+outcome :
+
+![Task5-4](screenshot/T5_4.png)
+
+### Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username.
+
+SQL:
+
+```sql
+SELECT member.username AS username, AVG(message.like_count)AS avg_likes FROM message JOIN member ON  message.member_id = member.id GROUP BY member.username;
+
+```
+
+outcome :
+
+![Task5-5](screenshot/T5_5.png)
