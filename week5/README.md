@@ -1,6 +1,6 @@
 # Task 2: Create database and table in your MySQL server
 
-### Create a new database named website.
+### 1. Create a new database named website.
 
 SQL :
 
@@ -12,7 +12,7 @@ outcome :
 
 ![Task2-1](screenshot/T2_1.png)
 
-### Create a new table named member, in the website database
+### 2. Create a new table named member, in the website database
 
 SQL :
 
@@ -36,7 +36,7 @@ outcome :
 
 # Task 3: SQL CRUD
 
-### INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data.
+### 1. INSERT a new row to the member table where name, username and password must be set to test. INSERT additional 4 rows with arbitrary data.
 
 SQL :
 
@@ -57,7 +57,7 @@ outcome :
 ![Task3-1-1](screenshot/T3_1_1.png)
 ![Task3-1-2](screenshot/T3_1_2.png)
 
-### SELECT all rows from the member table.
+### 2. SELECT all rows from the member table.
 
 SQL:
 
@@ -69,7 +69,7 @@ outcome :
 
 ![Task3-2](screenshot/T3_2.png)
 
-### SELECT all rows from the member table, in descending order of time.
+### 3. SELECT all rows from the member table, in descending order of time.
 
 SQL:
 
@@ -81,7 +81,7 @@ outcome :
 
 ![Task3-3](screenshot/T3_3.png)
 
-### SELECT total 3 rows, second to fourth, from the member table, in descending order of time
+### 4. SELECT total 3 rows, second to fourth, from the member table, in descending order of time
 
 SQL:
 
@@ -94,7 +94,7 @@ outcome :
 
 ![Task3-4](screenshot/T3_4.png)
 
-### SELECT rows where username equals to test.
+### 5. SELECT rows where username equals to test.
 
 SQL:
 
@@ -107,7 +107,7 @@ outcome :
 
 ![Task3-5](screenshot/T3_5.png)
 
-### SELECT rows where name includes the es keyword.
+### 6. SELECT rows where name includes the es keyword.
 
 SQL:
 
@@ -120,7 +120,7 @@ outcome :
 
 ![Task3-6](screenshot/T3_6.png)
 
-### SELECT rows where both username and password equal to test.
+### 7. SELECT rows where both username and password equal to test.
 
 SQL:
 
@@ -133,7 +133,7 @@ outcome :
 
 ![Task3-7](screenshot/T3_7.png)
 
-### UPDATE data in name column to test2 where username equals to test.
+### 8. UPDATE data in name column to test2 where username equals to test.
 
 SQL:
 
@@ -150,7 +150,7 @@ outcome :
 
 # Task 4: SQL Aggregation Functions
 
-### SELECT how many rows from the member table.
+### 1. SELECT how many rows from the member table.
 
 SQL:
 
@@ -162,7 +162,7 @@ outcome :
 
 ![Task4-1](screenshot/T4_1.png)
 
-### SELECT the sum of follower_count of all the rows from the member table.
+### 2. SELECT the sum of follower_count of all the rows from the member table.
 
 SQL:
 
@@ -174,7 +174,7 @@ outcome :
 
 ![Task4-2](screenshot/T4_2.png)
 
-### SELECT the average of follower_count of all the rows from the member table.
+### 3. SELECT the average of follower_count of all the rows from the member table.
 
 SQL:
 
@@ -186,7 +186,7 @@ outcome :
 
 ![Task4-3](screenshot/T4_3.png)
 
-### SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table.
+### 4. SELECT the average of follower_count of the first 2 rows, in descending order of follower_count, from the member table.
 
 SQL:
 
@@ -202,7 +202,7 @@ outcome :
 
 # Task 5: SQL JOIN
 
-### Create a new table named message, in the website database. designed as below:
+### 1. Create a new table named message, in the website database. designed as below:
 
 SQL:
 
@@ -221,7 +221,7 @@ outcome :
 
 ![Task5-1](screenshot/T5_1.png)
 
-### SELECT all messages, including sender names. We have to JOIN the member table to get that.
+### 2. SELECT all messages, including sender names. We have to JOIN the member table to get that.
 
 SQL:
 
@@ -233,7 +233,7 @@ outcome :
 
 ![Task5-2](screenshot/T5_2.png)
 
-### SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that.
+### 3. SELECT all messages, including sender names, where sender username equals to test. We have to JOIN the member table to filter and get that.
 
 SQL:
 
@@ -245,7 +245,7 @@ outcome :
 
 ![Task5-3](screenshot/T5_3.png)
 
-### Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test.
+### 4. Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages where sender username equals to test.
 
 SQL:
 
@@ -257,12 +257,12 @@ outcome :
 
 ![Task5-4](screenshot/T5_4.png)
 
-### Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username.
+### 5. Use SELECT, SQL Aggregation Functions with JOIN statement, get the average like count of messages GROUP BY sender username.
 
 SQL:
 
 ```sql
-SELECT member.username AS username, AVG(message.like_count)AS avg_likes FROM message JOIN member ON  message.member_id = member.id GROUP BY member.username;
+SELECT member.username AS username, AVG(message.like_count) AS avg_likes FROM message JOIN member ON  message.member_id = member.id GROUP BY member.username;
 
 ```
 
