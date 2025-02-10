@@ -3,5 +3,6 @@
 - Create a new database named website.
 
   SQL : create database website;
+
   outcome :
   ![Task2-1](screenshot/T2_1.png)
