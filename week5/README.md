@@ -99,7 +99,7 @@ outcome :
 SQL:
 
 ```sql
-SELECT * FROM member WHERE name = 'test';
+SELECT * FROM member WHERE username = 'test';
 
 ```
 
