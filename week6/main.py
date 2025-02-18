@@ -130,7 +130,7 @@ async def member(request: Request):
 
     # get all the messages
     try:
-        cursor.execute("select member.id, member.name, message.content, message.id from member join message on member.id = message.member_id")
+        cursor.execute("select member.id, member.name, message.content, message.id from member join message on member.id = message.member_id order by message.time desc")
         messages = cursor.fetchall()
     except mysql.connector.Error as err:
         print(f"資料庫錯誤: {err}")
