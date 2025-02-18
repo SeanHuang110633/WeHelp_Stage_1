@@ -166,7 +166,7 @@ async def createmessage(request: Request):
     
     # check is message is empty
     if not content:
-        return RedirectResponse(url="/error?message=留言內容不得為空白", status_code=303)
+        return RedirectResponse(url="/member", status_code=303)
 
     # connect to DB
     conn = conn_to_DB(db_host, db_user, db_password, db_name)
