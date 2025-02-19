@@ -46,7 +46,7 @@ async def signup(request: Request):
     try:
         cursor.execute("SELECT username FROM member WHERE username = %s", (username,))
         existing_user = cursor.fetchone()
-
+        
         if existing_user:
             return RedirectResponse(url="/error?message=帳號已被使用", status_code=303)
 
@@ -84,7 +84,7 @@ async def signin(request: Request):
     try:
         cursor.execute("SELECT id, name, username, password FROM member WHERE username = %s " , (username,))
         user = cursor.fetchone()
-
+        
         # check username
         if user is None:
             return RedirectResponse(url="/error?message=帳號或密碼輸入錯誤", status_code=303)
@@ -194,6 +194,7 @@ async def deletemessage(request: Request):
     if not request.session.get("SIGNED-IN"):
         return RedirectResponse(url="/", status_code=303)
 
+    user_id = request.session.get("user_id")
     form_data = await request.form()  
     message_id = form_data.get("message_id", "").strip()
 
@@ -203,6 +204,12 @@ async def deletemessage(request: Request):
 
     # delete message 
     try:
+        # check if the request is really sent by the message owner
+        cursor.execute("select member_id from message where message.id = %s", (message_id,))
+        member_id = cursor.fetchone()
+        if not member_id or member_id[0] != user_id:
+            return RedirectResponse(url="/error?message=你不能刪除這則留言", status_code=303)
+        # delete message
         cursor.execute("DELETE FROM message WHERE id = %s", (message_id,))
         conn.commit()
     except mysql.connector.Error as err:
