@@ -190,11 +190,12 @@
         })
         .then((data) => {
           const resultDiv = document.getElementById("query-result");
-          console.log(data.data);
-          if (data.data === "null") {
-            resultDiv.innerHTML = "無此會員";
-          } else {
+          if (data.data) {
             resultDiv.innerHTML = `${data.data.name} ( ${data.data.username} )`;
+            console.log("qoewuqowueoqiwueqwueo");
+          } else {
+            console.log("aslhdalsd");
+            resultDiv.innerHTML = "無此會員";
           }
         })
         .catch((error) => {

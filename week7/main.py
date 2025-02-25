@@ -120,10 +120,10 @@ async def signout(request: Request):
 async def get_member(request: Request, username: str = Query(None)):
     # check user state
     if not request.session.get("SIGNED-IN"):
-        return {"data": "null"}
+        return {"data": None}
     # check username
     if not username:
-        return {"data": "null"}
+        return {"data": None}
     # connect to DB
     conn = conn_to_DB(db_host, db_user, db_password, db_name)
     cursor = conn.cursor(dictionary=True)  
@@ -140,7 +140,7 @@ async def get_member(request: Request, username: str = Query(None)):
             }
             return {"data": result}
         else:
-            return {"data": "null"}
+            return {"data": None}
     except mysql.connector.Error as err:
         print(f"資料庫錯誤: {err}")
         return {"data": "null"}
